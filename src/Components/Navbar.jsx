@@ -38,7 +38,7 @@ export default function Navbar() {
         display: 'flex',
         justifyContent: 'space-around' }}
         >
-        <h2>DH Odonto</h2>
+        <h2 className='title'>DH Odonto</h2>
         {navButtons.map((button) => (
           <BottomNavigationAction component={RouterLink} key={button.name} label={button.name} to={button.path}/>
        ))}

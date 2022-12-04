@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Form } from "react-router-dom";
 import Contact from "./Routes/Contact";
 import Detail from "./Routes/Detail";
 import Home from "./Routes/Home"
@@ -15,6 +15,7 @@ function App() {
           <Route path='/contact' element={ <Contact/> }/>
           <Route path='/dentist/:id' element={ <Detail/> }/>
           <Route path='/favs' element={ <Favs/> }/>
+          
         </Routes>
       </BrowserRouter>
     </div>

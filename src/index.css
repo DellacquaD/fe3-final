@@ -30,6 +30,10 @@ nav{
   padding: 1rem;
 }
 
+.title::first-letter {
+  color: red; 
+}
+
 a{
   color: #000;
   text-decoration: none;
