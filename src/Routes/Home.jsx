@@ -1,15 +1,19 @@
 import React from 'react'
-import Card from '../Components/Card'
+import Grid from "../Components/common/Grid"
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
   return (
     <main className="" >
-      <h1>Home</h1>
+      <Navbar />
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}
+        <Grid />
       </div>
+      <Footer />
     </main>
   )
 }
