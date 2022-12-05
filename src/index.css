@@ -46,7 +46,7 @@ a:hover{
 
 footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
   padding: 2rem;
   position: relative;
@@ -56,13 +56,22 @@ footer {
   margin-top: 2rem;
 }
 
-footer > img{
+footer > div {
+  display: flex;
+}
+
+footer > div > img{
   width: 200px;
   margin: 0;
 }
 footer > p{
   margin: 0;
   padding-top: 0.7rem;
+}
+
+footer > ul {
+  display: flex;
+  list-style:none;
 }
 
 form{

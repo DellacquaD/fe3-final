@@ -34,7 +34,8 @@ export default function Navbar() {
     <Box>
       <BottomNavigation
         showLabels
-        sx={{ height: '80px',
+        sx={{ 
+        height: '80px',
         display: 'flex',
         justifyContent: 'space-around' }}
         >
