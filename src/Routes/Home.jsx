@@ -8,12 +8,10 @@ import Footer from '../Components/Footer'
 const Home = () => {
   return (
     <main className="" >
-      <Navbar />
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}
         <Grid />
       </div>
-      <Footer />
     </main>
   )
 }

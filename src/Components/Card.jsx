@@ -29,7 +29,7 @@ import { useState } from 'react';
 
 // export default Card;
 
-export default function Cards( odontologos ) {
+const Cards = ( odontologos ) => {
 
   const [favorites, setFavorites] = useState([])
 
@@ -63,3 +63,5 @@ export default function Cards( odontologos ) {
     </div>
   );
 }
+
+export default Cards

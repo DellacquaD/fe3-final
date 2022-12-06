@@ -74,6 +74,11 @@ footer > ul {
   list-style:none;
 }
 
+footer > ul > li {
+  width: 27px;
+  height: 27px;
+}
+
 form{
   display: flex;
   flex-direction: column;
