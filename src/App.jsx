@@ -1,26 +1,28 @@
-import { BrowserRouter, Routes, Route, Form } from "react-router-dom";
-import Contact from "./Routes/Contact";
-import Detail from "./Routes/Detail";
-import Home from "./Routes/Home"
-import Favs from "./Routes/Favs"
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
+import { useEffect } from 'react';
 
 function App() {
+  const location = useLocation;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate("/home");
+    }
+  });
+
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={ <Home /> } />
-          <Route path='/home' element={ <Home /> }/>
-          <Route path='/contact' element={ <Contact/> }/>
-          <Route path='/dentist/:id' element={ <Detail/> }/>
-          <Route path='/favs' element={ <Favs/> }/>
-          
-        </Routes>
-      </BrowserRouter>
+    <div >
+        <CssBaseline />
+        <Navbar />
+        <Outlet />
+        <Footer />
     </div>
-
-
-)}
+  );
+}
 
 export default App;

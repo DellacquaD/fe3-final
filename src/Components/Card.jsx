@@ -29,27 +29,12 @@ import { useState } from 'react';
 
 // export default Card;
 
-export default function Cards( { name, username, id } ) {
+export default function Cards( odontologos ) {
 
-  
-  const [favorites, setFavorites] = useState();
+  const [favorites, setFavorites] = useState([])
 
-  const getFavLocalStorage = () => {
-    const localData  = localStorage.getItem('favortios');
-    return localData ? JSON.parse(localData) : [];
-  }
-
-  const handleClickFavorites = () => {
-
-    // storageFavs = [];
-    // storageFavs.push(name, username, id);
-    // localStorage.setItem('favortios', JSON.stringify(storageFavs));
-    // alert("Dentista en la lista")
-    // return true;
-
-   
-  
-    
+  const handleClickFavorites = (e) => {
+    console.log(e)
   }
 
   
@@ -82,3 +67,5 @@ export default function Cards( { name, username, id } ) {
     </div>
   );
 }
+
+export default Cards

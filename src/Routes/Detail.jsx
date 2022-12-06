@@ -29,7 +29,7 @@ const Detail = () => {
   },[id])
 
   return (
-    <div>  
+    <div>
       <Navbar/>
       <h1>Detail Dentist id </h1>
     <TableContainer component={Paper}>

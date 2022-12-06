@@ -1,15 +1,60 @@
-import { createContext } from "react";
+import { createContext, useReducer, useMemo } from "react";
+import { createTheme } from '@mui/material';
+import { grey, blue, red } from "@mui/material/colors";
+import axios from "axios";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 
-export const initialState = {theme: "", data: []}
+export const ContextGlobal = createContext();
 
-export const ContextGlobal = createContext(undefined);
+const reducerFunction = (state, action) => {
+  switch (action.type) {
+    case "theme":
+      return {...state, prefersDark: !state.prefersDark};
+    case "data":
+      return {...state, data: action.payload};
+    default:
+      return state;
+  }
+}
 
 export const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
+  const initialState = {prefersDark: false, data: []}
+  const [state, dispatch] = useReducer(reducerFunction, initialState);
+
+  const theme = createTheme({
+    palette:{
+      mode: (state.prefersDark ? 'dark' : 'light'),
+      primary: {
+        main: (state.prefersDark ? grey[500]: blue[500]),
+      },
+      secondary:{
+        main: (state.prefersDark ? grey[900] : red[400]),
+
+      },
+    }
+  });
+
+  const getData = () => {
+    axios.get('https://jsonplaceholder.typicode.com/users').then(
+      res => {
+        dispatch({type: "data" , payload: res.data})
+      }
+    )
+  }
+
+  useMemo(() => getData(), [])
+
+  const store = {
+    state,
+    dispatch
+  };
 
   return (
-    <ContextGlobal.Provider value={{}}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+    <ContextGlobal.Provider value={store}>
       {children}
     </ContextGlobal.Provider>
-  );
-};
+    </ThemeProvider>
+  )
+}

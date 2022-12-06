@@ -1,9 +1,15 @@
-import { Container } from '@mui/material'
 import React from 'react'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { useContext } from 'react'
+import { ContextGlobal } from './utils/global.context';
+import TikTokIcon from './common/tiktokIcon';
 
 const Footer = () => {
+
+  const { state } = useContext(ContextGlobal)
+
   return (
     <footer>
       <div>
@@ -13,8 +19,8 @@ const Footer = () => {
         <ul>
           <li><FacebookIcon /></li>
           <li><InstagramIcon /></li>
-          <li><FacebookIcon /></li>
-          <li><FacebookIcon /></li>
+          <li><WhatsAppIcon /></li>
+          <li><TikTokIcon color={state.prefersDark ? '#ffffff' : '#000000'}/></li>
         </ul>
     </footer>
   )

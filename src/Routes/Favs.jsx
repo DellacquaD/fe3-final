@@ -8,7 +8,6 @@ const Favs = () => {
 
   return (
     <div>
-      <Navbar/>
       <h1>Dentists Favs</h1>
       <div className="card-grid">
         {/* este componente debe consumir los destacados del localStorage */}
