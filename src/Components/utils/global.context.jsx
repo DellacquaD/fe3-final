@@ -1,15 +1,14 @@
-import { createContext, useReducer, useMemo } from "react";
-import { createTheme } from '@mui/material';
-import { grey, blue, red } from "@mui/material/colors";
 import axios from "axios";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { grey, blue, red } from "@mui/material/colors";
+import { createContext, useReducer, useMemo } from "react";
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
-export const ContextGlobal = createContext();
+export const GlobalContext = createContext();
 
-const reducerFunction = (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case "theme":
-      return {...state, prefersDark: !state.prefersDark};
+      return {...state, Dark: !state.Dark};
     case "data":
       return {...state, data: action.payload};
     default:
@@ -18,18 +17,19 @@ const reducerFunction = (state, action) => {
 }
 
 export const ContextProvider = ({ children }) => {
-  const initialState = {prefersDark: false, data: []}
-  const [state, dispatch] = useReducer(reducerFunction, initialState);
+  const initialState = {Dark: false, data: []}
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const theme = createTheme({
     palette:{
-      mode: (state.prefersDark ? 'dark' : 'light'),
+      mode: (state.Dark ? 'dark' : 'light'),
       primary: {
-        main: (state.prefersDark ? grey[500]: blue[500]),
+        main: (state.Dark ? grey[600]: blue[500]),
+        contrastText: (state.Dark ? "#ffffff": "#000000")
       },
       secondary:{
-        main: (state.prefersDark ? grey[900] : red[400]),
-
+        main: (state.Dark ? grey[900] : red[400]),
+        contrastText: (state.Dark ? "#ffffff": "#000000")
       },
     }
   });
@@ -52,9 +52,9 @@ export const ContextProvider = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-    <ContextGlobal.Provider value={store}>
+    <GlobalContext.Provider value={store}>
       {children}
-    </ContextGlobal.Provider>
+    </GlobalContext.Provider>
     </ThemeProvider>
   )
 }
