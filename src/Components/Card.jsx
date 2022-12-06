@@ -29,13 +29,32 @@ import { useState } from 'react';
 
 // export default Card;
 
-export default function Cards( odontologos ) {
+export default function Cards( { name, username, id } ) {
 
-  const [favorites, setFavorites] = useState([])
+  
+  const [favorites, setFavorites] = useState();
 
-  const handleClickFavorites = (e) => {
-    console.log(e)
+  const getFavLocalStorage = () => {
+    const localData  = localStorage.getItem('favortios');
+    return localData ? JSON.parse(localData) : [];
   }
+
+  const handleClickFavorites = () => {
+
+    // storageFavs = [];
+    // storageFavs.push(name, username, id);
+    // localStorage.setItem('favortios', JSON.stringify(storageFavs));
+    // alert("Dentista en la lista")
+    // return true;
+
+   
+  
+    
+  }
+
+  
+
+
 
   return (
     <div>
@@ -49,13 +68,13 @@ export default function Cards( odontologos ) {
             />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {odontologos.name}
+              {name}
             </Typography>
-            <Link to={`/dentist/${odontologos.id}`}>{odontologos.username}</Link>
+            <Link to={`/dentist/${id}`}>{username}</Link>
           </CardContent>
         </Card>
         <CardActions sx={{ justifyContent: 'center' }}>
-          <Button size="small" color="primary" onClick={handleClickFavorites} >
+          <Button size="small" color="primary" onClick={handleClickFavorites()} >
             <StarBorderIcon/>
           </Button>
         </CardActions>
