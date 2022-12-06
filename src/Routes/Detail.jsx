@@ -29,8 +29,7 @@ const Detail = () => {
   },[id])
 
   return (
-    <div>
-      <Navbar/>
+    <div>    
       <h1>Detail Dentist id </h1>
     <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
