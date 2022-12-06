@@ -30,7 +30,7 @@ const Detail = () => {
 
   return (
     <div>    
-      <h1>Detail Dentist id </h1>
+      <h1>Detail Dentist  {odontologo?.id} </h1>
     <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead>
