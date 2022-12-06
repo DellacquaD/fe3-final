@@ -29,17 +29,13 @@ import { useState } from 'react';
 
 // export default Card;
 
-export default function Cards( odontologos ) {
+const Cards = ( odontologos ) => {
 
   const [favorites, setFavorites] = useState([])
 
   const handleClickFavorites = (e) => {
     console.log(e)
   }
-
-  
-
-
 
   return (
     <div>
@@ -53,13 +49,13 @@ export default function Cards( odontologos ) {
             />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {name}
+              {odontologos.name}
             </Typography>
-            <Link to={`/dentist/${id}`}>{username}</Link>
+            <Link to={`/dentist/${odontologos.id}`}>{odontologos.username}</Link>
           </CardContent>
         </Card>
         <CardActions sx={{ justifyContent: 'center' }}>
-          <Button size="small" color="primary" onClick={handleClickFavorites()} >
+          <Button size="small" color="primary" onClick={handleClickFavorites} >
             <StarBorderIcon/>
           </Button>
         </CardActions>
