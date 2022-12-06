@@ -1,40 +1,55 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActions } from '@mui/material';
-import { Link } from 'react-router-dom';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import {StarBorder, Star} from '@mui/icons-material';
+import {Card, CardMedia, CardContent, Typography, Button, CardActions} from '@mui/material';
+import { useReducer } from "react";
 
 
-// const Card = ({ name, username, id }) => {
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "isFavorite":
+      return {...state, isFavorite: !state.isFavorite};
+    case "addFavorite":
+      return {...state, addFavorite: state};
+    default:
+      return state;
+  }
+}
+
+const Cards = ( { name, username, id } ) => {
+  const initialState = {isFavorite: true, addFavorite: id};
+  const [state, dispatch] = useReducer(reducer, initialState);
 
 //   const addFav = ()=>{
 //     // Aqui iria la logica para agregar la Card en el localStorage
 //   }
 
-//   return (
-//     <div className="card">
-//         {/* En cada card deberan mostrar en name - username y el id */}
+ const [favState, setFav] = useState(localStorage.getItem("id") ? (localStorage.getItem("id").includes(id) ? true : false) : false)
+ 
+  const handleClickFavorites = () => {
+    dispatch({type: "isFavorite"})
+    // dispatch({type: "addFavorite"})
+    setFavStorage(state.addFavorite)
+    setFav(!favState)
+  }
 
-//         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
+  const getFavStorage = () => {
+    const localData = localStorage.getItem("id");
+    return localData ? JSON.parse(localData) : [];
+  }
 
-//         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-//         <button onClick={addFav} className="favButton">Add fav</button>
-//     </div>
-//   );
-// };
-
-// export default Card;
-
-const Cards = ( odontologos ) => {
-
-  const [favorites, setFavorites] = useState([])
-
-  const handleClickFavorites = (e) => {
-    console.log(e)
+   const setFavStorage = (idOdo) => {
+    let storageFavs = getFavStorage();
+    if (storageFavs.includes(idOdo)) {
+      const storageFavsAux = storageFavs.filter(fav => fav !== idOdo)
+      localStorage.setItem("id", JSON.stringify(storageFavsAux))
+      
+    }
+    else {
+      storageFavs.push(idOdo)
+      localStorage.setItem("id", JSON.stringify(storageFavs))      
+    }
   }
 
   return (
@@ -48,15 +63,15 @@ const Cards = ( odontologos ) => {
             alt="doctor image Background"
             />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {odontologos.name}
+            <Typography gutterBottom variant="h5" component="div" >
+            <Link to={`/dentist/${id}`}>{name}</Link>
             </Typography>
-            <Link to={`/dentist/${odontologos.id}`}>{odontologos.username}</Link>
+            {username}
           </CardContent>
         </Card>
         <CardActions sx={{ justifyContent: 'center' }}>
-          <Button size="small" color="primary" onClick={handleClickFavorites} >
-            <StarBorderIcon/>
+          <Button id={id} size="medium" color="primary" onClick={handleClickFavorites} >
+          {favState ? <Star id={id}/> : <StarBorder id={id}/>}
           </Button>
         </CardActions>
       </Card>
