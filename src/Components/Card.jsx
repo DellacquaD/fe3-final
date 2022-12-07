@@ -5,32 +5,32 @@ import {StarBorder, Star} from '@mui/icons-material';
 import {Card, CardMedia, CardContent, Typography, Button, CardActions} from '@mui/material';
 
 
-const Cards = ( { name, username, id } ) => {
+const Cards = ( odontologo ) => {
 
- const [favState, setFav] = useState(localStorage.getItem("id") ? (localStorage.getItem("id").includes(id) ? true : false) : false)
+const [favState, setFav] = useState(localStorage.getItem("favorites") ? (JSON.parse(localStorage.getItem("favorites")).some(e => e.id === odontologo.id) ? true : false) : false)
  
   const handleClickFavorites = () => {
-    setFavStorage(id)
+    setFavStorage(odontologo)
     setFav(!favState)
   }
 
   const getFavStorage = () => {
-    const localData = localStorage.getItem("id");
+    const localData = localStorage.getItem("favorites");
     return localData ? JSON.parse(localData) : [];
   }
 
-   const setFavStorage = (idOdo) => {
+   const setFavStorage = (odontologo) => {
     let storageFavs = getFavStorage();
-    if (storageFavs.includes(idOdo)) {
-      const storageFavsAux = storageFavs.filter(fav => fav !== idOdo)
-      localStorage.setItem("id", JSON.stringify(storageFavsAux))
-      
+    if (storageFavs.some(e => e.id === odontologo.id)) {
+      const storageFavsAux = storageFavs.filter(fav => fav.id !== odontologo.id)
+      localStorage.setItem("favorites", JSON.stringify(storageFavsAux))   
     }
     else {
-      storageFavs.push(idOdo)
-      localStorage.setItem("id", JSON.stringify(storageFavs))      
+      storageFavs.push(odontologo)
+      localStorage.setItem("favorites", JSON.stringify(storageFavs))      
     }
   }
+
 
   return (
     <div>
@@ -44,14 +44,14 @@ const Cards = ( { name, username, id } ) => {
             />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" >
-            <Link to={`/dentist/${id}`}>{name}</Link>
+            <Link to={`/dentist/${odontologo.id}`}>{odontologo.name}</Link>
             </Typography>
-            {username}
+            {odontologo.username}
           </CardContent>
         </Card>
         <CardActions sx={{ justifyContent: 'center' }}>
-          <Button id={id} size="medium" color="primary" onClick={handleClickFavorites} >
-          {favState ? <Star id={id}/> : <StarBorder id={id}/>}
+          <Button id={odontologo.id} size="medium" color="primary" onClick={handleClickFavorites} onChange={handleClickFavorites}>
+          {favState ? <Star id={odontologo.id}/> : <StarBorder id={odontologo.id}/>}
           </Button>
         </CardActions>
       </Card>

@@ -1,24 +1,27 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Grid from '@mui/material/Grid';
 import Card from '../Card'
-import { GlobalContext } from '../utils/global.context';
 
 
-export default function SpacingGrid() {
+export default function GridFavorites() {
 
-const { state } = useContext(GlobalContext)
     
+    const favoriteArray = JSON.parse(localStorage.getItem("favorites"))
+    
+    // console.log(favoriteArray)
+  
+
   return (
     <Grid sx={{ flexGrow: 1 }}>
       <Grid item xs={12}>
         <Grid container justifyContent="center" spacing={4}>
-          {state.data.map((odontologo) => (
+            {favoriteArray.map((odontologo) => (
             <Grid key={odontologo.id} item>
-              <Card {...odontologo}/>
+              <Card {...odontologo }/>
             </Grid>
           ))}
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
   );
 }

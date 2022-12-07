@@ -1,6 +1,5 @@
 import React,  {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import Navbar from '../Components/Navbar'
 import axios from 'axios'
 //MUI
 import Table from '@mui/material/Table';
@@ -10,9 +9,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-
-
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
