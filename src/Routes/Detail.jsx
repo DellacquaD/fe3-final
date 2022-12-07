@@ -31,7 +31,7 @@ const Detail = () => {
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 2 } }}>
-          <TableCell>Name</TableCell>
+          <TableCell align="center">Name</TableCell>
           <TableCell align="center">Email</TableCell>
           <TableCell align="center">Phone</TableCell>
           <TableCell align="center">Website</TableCell>         
@@ -39,7 +39,7 @@ const Detail = () => {
       </TableHead>
       <TableBody>        
           <TableRow  sx={{ '&:last-child td, &:last-child th': { border: 2 } }} >                 
-            <TableCell component="th" scope="row">
+            <TableCell align="center" component="th" scope="row">
               {odontologo?.name}
             </TableCell>
             <TableCell align="center">{odontologo?.email}</TableCell>
