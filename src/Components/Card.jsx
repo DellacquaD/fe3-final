@@ -3,34 +3,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {StarBorder, Star} from '@mui/icons-material';
 import {Card, CardMedia, CardContent, Typography, Button, CardActions} from '@mui/material';
-import { useReducer } from "react";
 
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "isFavorite":
-      return {...state, isFavorite: !state.isFavorite};
-    case "addFavorite":
-      return {...state, addFavorite: state};
-    default:
-      return state;
-  }
-}
 
 const Cards = ( { name, username, id } ) => {
-  const initialState = {isFavorite: true, addFavorite: id};
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-//   const addFav = ()=>{
-//     // Aqui iria la logica para agregar la Card en el localStorage
-//   }
 
  const [favState, setFav] = useState(localStorage.getItem("id") ? (localStorage.getItem("id").includes(id) ? true : false) : false)
  
   const handleClickFavorites = () => {
-    dispatch({type: "isFavorite"})
-    // dispatch({type: "addFavorite"})
-    setFavStorage(state.addFavorite)
+    setFavStorage(id)
     setFav(!favState)
   }
 
