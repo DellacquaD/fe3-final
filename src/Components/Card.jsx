@@ -1,17 +1,23 @@
-import * as React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {StarBorder, Star} from '@mui/icons-material';
 import {Card, CardMedia, CardContent, Typography, Button, CardActions} from '@mui/material';
+import React, { useContext } from 'react'
+import { GlobalContext } from '../Components/utils/global.context';
+
 
 
 const Cards = ( odontologo ) => {
+
+const { setCheckFavorite, checkFavorite } = useContext(GlobalContext)
+
 
 const [favState, setFav] = useState(localStorage.getItem("favorites") ? (JSON.parse(localStorage.getItem("favorites")).some(e => e.id === odontologo.id) ? true : false) : false)
  
   const handleClickFavorites = () => {
     setFavStorage(odontologo)
     setFav(!favState)
+    setCheckFavorite(!checkFavorite)
   }
 
   const getFavStorage = () => {
@@ -23,13 +29,14 @@ const [favState, setFav] = useState(localStorage.getItem("favorites") ? (JSON.pa
     let storageFavs = getFavStorage();
     if (storageFavs.some(e => e.id === odontologo.id)) {
       const storageFavsAux = storageFavs.filter(fav => fav.id !== odontologo.id)
-      localStorage.setItem("favorites", JSON.stringify(storageFavsAux))   
+      localStorage.setItem("favorites", JSON.stringify(storageFavsAux))  
     }
     else {
       storageFavs.push(odontologo)
-      localStorage.setItem("favorites", JSON.stringify(storageFavs))      
+      localStorage.setItem("favorites", JSON.stringify(storageFavs))   
     }
   }
+  
 
 
   return (

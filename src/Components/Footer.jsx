@@ -3,6 +3,7 @@ import {Instagram, Facebook, WhatsApp} from '@mui/icons-material';
 import { useContext } from 'react'
 import { GlobalContext } from './utils/global.context';
 import TikTokIcon from './common/tiktokIcon';
+import { Typography } from '@mui/material';
 
 const Footer = () => {
 
@@ -11,7 +12,7 @@ const Footer = () => {
   return (    
     <footer> 
       <section>
-        <p> VOTA PARA O OPO</p>
+        <Typography> VOTA PARA O OPO</Typography>
       </section>
       <div className='footer'>   
         <div>

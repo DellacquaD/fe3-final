@@ -2,6 +2,7 @@ import axios from "axios";
 import { grey, blue, red } from "@mui/material/colors";
 import { createContext, useReducer, useMemo } from "react";
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { useState } from "react";
 
 export const GlobalContext = createContext();
 
@@ -11,6 +12,7 @@ const reducer = (state, action) => {
       return {...state, Dark: !state.Dark};
     case "data":
       return {...state, data: action.payload};
+
     default:
       return state;
   }
@@ -19,12 +21,13 @@ const reducer = (state, action) => {
 export const ContextProvider = ({ children }) => {
   const initialState = {Dark: false, data: []}
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [checkFavorite, setCheckFavorite] = useState(true)
 
   const theme = createTheme({
     palette:{
       mode: (state.Dark ? 'dark' : 'light'),
       primary: {
-        main: (state.Dark ? grey[600]: blue[500]),
+        main: (state.Dark ? grey[600]: blue[400]),
         contrastText: (state.Dark ? "#ffffff": "#000000")
       },
       secondary:{
@@ -46,8 +49,11 @@ export const ContextProvider = ({ children }) => {
 
   const store = {
     state,
-    dispatch
+    dispatch,
+    setCheckFavorite,
+    checkFavorite
   };
+  
 
   return (
     <ThemeProvider theme={theme}>
