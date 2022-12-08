@@ -50,7 +50,7 @@ const Form = () => {
             fullWidth
             id="email"
             name="email"
-            label="Email"
+            label="email"
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
