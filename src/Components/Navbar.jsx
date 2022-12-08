@@ -40,7 +40,7 @@ const Navbar = () => {
         {navButtons.map((button) => (
           <BottomNavigationAction component={RouterLink} key={button.name} label={button.name} to={button.path}/>
           ))}
-        <IconButton onClick={() => dispatch({type: "theme"})}>{state.Dark ? <Brightness5/> : <DarkMode />}</IconButton>
+        <i component={IconButton}  onClick={() => dispatch({type: "theme"})}>{state.Dark ? <Brightness5/> : <DarkMode />}</i>
       </BottomNavigation>
     </Box>
   );

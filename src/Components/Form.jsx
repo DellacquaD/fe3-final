@@ -26,8 +26,7 @@ const Form = () => {
         email: 'fulanito@mail.com',
       },
       validationSchema: validationSchema,
-      onSubmit: (values) => {
-        console.log(values);
+      onSubmit: (values) => {       
         setMessage(`Gracias ${values.name}, te contactaremos cuanto antes vía mail.`)
       },
     });
@@ -50,7 +49,7 @@ const Form = () => {
             fullWidth
             id="email"
             name="email"
-            label="Email"
+            label="email"
             value={formik.values.email}
             onChange={formik.handleChange}
             error={formik.touched.email && Boolean(formik.errors.email)}
