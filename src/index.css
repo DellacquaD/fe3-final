@@ -51,7 +51,7 @@ footer {
   width: 100%;
   height: 25px;
   margin-top: 2rem;
-  background-color: red;
+  /* background-color: red; */
 }
 
 footer section {
@@ -152,4 +152,8 @@ tr:nth-child(even) {
 }
 .dark > a {
   color: white;
+}
+
+main {
+  height: 100vh;
 }

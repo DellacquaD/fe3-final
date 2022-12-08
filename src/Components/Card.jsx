@@ -1,37 +1,20 @@
-import * as React from 'react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {StarBorder, Star} from '@mui/icons-material';
 import {Card, CardMedia, CardContent, Typography, Button, CardActions} from '@mui/material';
+import React, { useContext } from 'react'
+import { GlobalContext } from '../Components/utils/global.context';
+import { setFavStorage, isFav } from './utils/functions'; 
 
 
 const Cards = ( odontologo ) => {
 
-const [favState, setFav] = useState(localStorage.getItem("favorites") ? (JSON.parse(localStorage.getItem("favorites")).some(e => e.id === odontologo.id) ? true : false) : false)
+  const { state, dispatch } = useContext(GlobalContext)
  
   const handleClickFavorites = () => {
     setFavStorage(odontologo)
-    setFav(!favState)
+    dispatch({type: "fav", payload: !state.fav})
   }
-
-  const getFavStorage = () => {
-    const localData = localStorage.getItem("favorites");
-    return localData ? JSON.parse(localData) : [];
-  }
-
-   const setFavStorage = (odontologo) => {
-    let storageFavs = getFavStorage();
-    if (storageFavs.some(e => e.id === odontologo.id)) {
-      const storageFavsAux = storageFavs.filter(fav => fav.id !== odontologo.id)
-      localStorage.setItem("favorites", JSON.stringify(storageFavsAux))   
-    }
-    else {
-      storageFavs.push(odontologo)
-      localStorage.setItem("favorites", JSON.stringify(storageFavs))      
-    }
-  }
-
-
+  
   return (
     <div>
       <Card sx={{ maxWidth: 345 }}>
@@ -42,16 +25,16 @@ const [favState, setFav] = useState(localStorage.getItem("favorites") ? (JSON.pa
             image="https://raw.githubusercontent.com/Frontend-III/fe3-final/main/public/images/doctor.jpg"
             alt="doctor image Background"
             />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div" >
-            <Link to={`/dentist/${odontologo.id}`}>{odontologo.name}</Link>
-            </Typography>
+          <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <Typography component={Link} gutterBottom variant="h5" to={`/dentist/${odontologo.id}`} color="secondary">
+              {odontologo.name}
+            </Typography >
             {odontologo.username}
           </CardContent>
         </Card>
         <CardActions sx={{ justifyContent: 'center' }}>
-          <Button id={odontologo.id} size="medium" color="primary" onClick={handleClickFavorites} onChange={handleClickFavorites}>
-          {favState ? <Star id={odontologo.id}/> : <StarBorder id={odontologo.id}/>}
+          <Button id={odontologo.id} size="medium" color="succes" onClick={handleClickFavorites} onChange={handleClickFavorites}>
+          {isFav(odontologo) ? <Star id={odontologo.id} color=""/> : <StarBorder id={odontologo.id}/>}
           </Button>
         </CardActions>
       </Card>

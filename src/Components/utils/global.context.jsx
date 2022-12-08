@@ -1,9 +1,11 @@
 import axios from "axios";
-import { grey, blue, red } from "@mui/material/colors";
-import { createContext, useReducer, useMemo } from "react";
+import { getFavStorage } from "./functions"
+import { green, grey, red } from "@mui/material/colors";
+import { createContext, useReducer, useMemo, useEffect } from "react";
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
-export const GlobalContext = createContext();
+
+export const GlobalContext = createContext(undefined);
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -11,27 +13,43 @@ const reducer = (state, action) => {
       return {...state, Dark: !state.Dark};
     case "data":
       return {...state, data: action.payload};
+    case "fav":
+      return {...state, fav: action.payload}
+    case "arrayFavorite":
+      return {...state, fav2render: action.payload}
+
+
     default:
       return state;
   }
 }
 
 export const ContextProvider = ({ children }) => {
-  const initialState = {Dark: false, data: []}
+  const initialState = {Dark: false, data: [], fav: true, fav2render: []}
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const theme = createTheme({
     palette:{
       mode: (state.Dark ? 'dark' : 'light'),
       primary: {
-        main: (state.Dark ? grey[600]: blue[500]),
-        contrastText: (state.Dark ? "#ffffff": "#000000")
+        main: (state.Dark ? grey[600] : green[300 ]),
+        contrastText: "#ffffff",
       },
       secondary:{
-        main: (state.Dark ? grey[900] : red[400]),
-        contrastText: (state.Dark ? "#ffffff": "#000000")
+        main: (state.Dark ? green[600] : grey[800]),
+        contrastText: "#ffffff"
       },
-    }
+      error: {
+        main: (state.Dark ? grey[100] : grey[800]),
+        contrastText: "#ffffff"
+      },
+      succes: {
+        main: (state.Dark ? green[300] : green[500]),
+      },
+      info: {
+        main: (state.Dark ? grey[900] : grey[200]),
+      }
+    },
   });
 
   const getData = () => {
@@ -44,10 +62,17 @@ export const ContextProvider = ({ children }) => {
 
   useMemo(() => getData(), [])
 
+  useEffect(() => {
+    const fav2render = getFavStorage();
+    dispatch({type: "arrayFavorite", payload: fav2render })
+  }, [state.fav])
+  
+
   const store = {
     state,
-    dispatch
+    dispatch,
   };
+  
 
   return (
     <ThemeProvider theme={theme}>

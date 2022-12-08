@@ -1,3 +1,4 @@
+import { Box, Typography } from '@mui/material'
 import React from 'react'
 import Grid from "../Components/common/Grid"
 
@@ -6,13 +7,21 @@ import Grid from "../Components/common/Grid"
 
 const Home = () => {
   return (
-    <main className="" >
+    <Box sx={{ my: 5}}>
+      <Typography sx={{
+        fontSize: 40,
+        display: 'flex',
+        justifyContent: 'center',
+        letterSpacing: "5px",
+        mb: 5, 
+        }}>
+        Nuestros Dentistas
+      </Typography>
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}
-        <h1>Home</h1>
         <Grid />
       </div>
-    </main>
+    </Box>
   )
 }
 

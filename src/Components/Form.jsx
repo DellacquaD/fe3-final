@@ -22,8 +22,8 @@ const Form = () => {
 
     const formik = useFormik({
       initialValues: {
-        name: 'fulanito',
-        email: 'fulanito@mail.com',
+        name: '',
+        email: '',
       },
       validationSchema: validationSchema,
       onSubmit: (values) => {       
@@ -65,7 +65,6 @@ const Form = () => {
       </div>
     </div>
   );
-
 };
 
 export default Form
