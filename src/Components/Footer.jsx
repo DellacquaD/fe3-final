@@ -33,7 +33,7 @@ const Footer = () => {
               <Typography color="secondary">
                 Powered by
               </Typography>
-              <Typography color="error" variant='h5'>
+              <Typography color="error" variant='h5' fontWeight="bold">
                 DIGITAL HOUSE
               </Typography>
             </Box>

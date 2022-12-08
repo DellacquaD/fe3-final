@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getFavStorage } from "./functions"
-import { green, grey } from "@mui/material/colors";
+import { green, grey, red } from "@mui/material/colors";
 import { createContext, useReducer, useMemo, useEffect } from "react";
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
@@ -40,14 +40,14 @@ export const ContextProvider = ({ children }) => {
         contrastText: "#ffffff"
       },
       error: {
-        main: (state.Dark ? grey[100] : grey[900]),
+        main: (state.Dark ? grey[100] : grey[800]),
         contrastText: "#ffffff"
       },
       succes: {
         main: (state.Dark ? green[300] : green[500]),
       },
       info: {
-        main: (state.Dark ? grey[900] : grey[800]),
+        main: (state.Dark ? grey[900] : grey[200]),
       }
     },
   });
