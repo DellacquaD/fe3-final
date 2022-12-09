@@ -8,13 +8,13 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 const Footer = () => {
 
   return (    
-    <AppBar position="static">
+    <AppBar position="static" >
       <Container maxWidth="x2" sx={{ display: 'flex', flexDirection: 'column' }}> 
         <Button
           color='secondary'
-          fontWeight='bold'
           width="auto"
           onClick={() => {document.body.scrollIntoView({ behavior: "smooth"})}}
+          style={{ fontWeight: 'bold' }}
           >
             Scroll Up
         </Button>
