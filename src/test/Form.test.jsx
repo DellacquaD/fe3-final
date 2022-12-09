@@ -7,6 +7,7 @@ beforeEach(() =>{
     render(<Form/>);
 })
 
+
 test('Verifica que se renderizan los elementos nececarios del form', () => {
     
     const inputName = screen.getByLabelText("name");
@@ -31,7 +32,7 @@ test('Verifica que el nombre ingresado por parametro, es el mostrado en pantalla
     const btnSubmit= screen.getByRole("button", {name: /Submit/i}); 
     fireEvent.click(btnSubmit)
 
-    const wordMeaning = await screen.findByText(/Gracias Brahian, te contactaremos cuanto antes vía mail./i)
+    const wordMeaning = await screen.findByText(/Thanks Brahian, we will contact you as soon as possible./i)
 
     expect(wordMeaning).toBeInTheDocument();   
 })

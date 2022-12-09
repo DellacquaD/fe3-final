@@ -1,10 +1,9 @@
 import React from 'react'
 import {Instagram, Facebook, WhatsApp} from '@mui/icons-material';
-import { useContext } from 'react'
-import { GlobalContext } from './utils/global.context';
 import TikTokIcon from './common/tiktokIcon';
 import { AppBar, Box, Button, Container, IconButton, Typography } from '@mui/material';
-import {  green, grey } from '@mui/material/colors';
+import TwitterIcon from '@mui/icons-material/Twitter';
+
 
 const Footer = () => {
 
@@ -17,7 +16,7 @@ const Footer = () => {
           width="auto"
           onClick={() => {document.body.scrollIntoView({ behavior: "smooth"})}}
           >
-            Volver a arriba
+            Scroll Up
         </Button>
         <Box    
         sx={{ 
@@ -35,11 +34,11 @@ const Footer = () => {
                 DIGITAL HOUSE
               </Typography>
             </Box>
-            <Box role="Anchors">
-              <Typography role="facebook" component={IconButton} href={"https://www.facebook.com/"}><Facebook color='secondary'/></Typography>
-              <Typography role="instagram" component={IconButton} href={"https://www.instagram.com/"}><Instagram color='secondary'/></Typography>
-              <Typography role="whatsapp" component={IconButton} href={"https://www.whatsapp.com/"}><WhatsApp color='secondary'/></Typography>
-              <Typography role="tiktok" component={IconButton} href={"https://www.tiktok.com/"}><TikTokIcon/></Typography>
+            <Box>
+              <IconButton role="facebook" href='https://www.facebook.com/' ><Facebook color='secondary'/></IconButton>
+              <IconButton role="instagram" href='https://www.instagram.com/'><Instagram color='secondary'/></IconButton>
+              <IconButton role="whatsapp" href='https://www.whatsapp.com/' ><WhatsApp color='secondary'/></IconButton>
+              <IconButton role="tiktok" href='https://www.twitter.com/'><TwitterIcon color='secondary'/></IconButton>
             </Box>
         </Box>
       </Container>

@@ -16,6 +16,11 @@ function ResponsiveAppBar() {
   
   const {state, dispatch} = useContext(GlobalContext) 
 
+  const handleClick = () => {
+    dispatch({type: "theme"})
+  }
+ 
+
   
   const pages = [
     {
@@ -49,6 +54,7 @@ function ResponsiveAppBar() {
                 variant="h6"
                 component={Link}
                 color='secondary'
+                
                 sx={{
                   mr: 2,
                   display: { xs: 'none', md: 'flex' },
@@ -64,15 +70,22 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1 }}>
             <Box sx={{ p:1, display:'flex', justifyContent: 'flex-end', mr: 5 }}>
               {pages.map((page) => (
-                <ButtonGroup key={page.name} sx={{ p: 0, margin: '5px', width:'150px', height: '60px', borderRadius: 'px'  }}>
-                  <Button component={Link} id={page.name} to={page.path} style={linkStyle} color="secondary">{page.name}</Button>
+                <ButtonGroup key={page.name} 
+                sx={{ 
+                  p: 0,
+                  margin: '5px', 
+                  width:'150px', 
+                  height: '60px', 
+                  borderRadius: 'px'  
+                }}>
+                  <Typography component={Link} role="home" id={page.name} to={page.path} style={linkStyle} color="secondary">{page.name}</Typography>
                 </ButtonGroup>
               ))}
             </Box>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Change Theme">
-              <IconButton onClick={() => dispatch({type: "theme"})}>
+              <IconButton role={state.Dark ? "isDark" : "isLigth"} onClick={handleClick}>
                   {state.Dark ? <Brightness5/> : <DarkMode />}
               </IconButton>
             </Tooltip>

@@ -18,7 +18,7 @@ const Form = () => {
       .required('Name is required'),
   });
 
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState()
 
     const formik = useFormik({
       initialValues: {
@@ -27,8 +27,7 @@ const Form = () => {
       },
       validationSchema: validationSchema,
       onSubmit: (values) => {
-        console.log(values);
-        setMessage(`Gracias ${values.name}, te contactaremos cuanto antes vía mail.`)
+        setMessage(`Thanks ${values.name}, we will contact you as soon as possible.`)
       },
     });
   

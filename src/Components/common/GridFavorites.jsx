@@ -2,6 +2,7 @@ import Grid from '@mui/material/Grid';
 import Card from '../Card'
 import React, { useContext } from 'react'
 import { GlobalContext } from '../utils/global.context';
+import { Typography } from '@mui/material';
 
 export default function GridFavorites() {
  const {state} = useContext(GlobalContext)
@@ -16,6 +17,7 @@ export default function GridFavorites() {
               <Card {...odontologo}/>
             </Grid>
           ))}
+          <Typography>{state.fav2render === [] ? "No tienes dentistas agregados a favoritos" : ""}</Typography>
         </Grid>
       </Grid>
     </Grid>

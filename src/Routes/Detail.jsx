@@ -9,6 +9,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Box } from '@mui/system';
+import { Typography } from '@mui/material';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -25,10 +27,19 @@ const Detail = () => {
   },[id])
 
   return (
-    <div>    
-      <h1>Detail Dentist  {odontologo?.id} </h1>
+    <Box >
+      <Typography 
+      sx={{
+        fontSize: 40,
+        display: 'flex',
+        justifyContent: 'center',
+        letterSpacing: "5px",
+        my: 5, 
+        }}>
+        {odontologo?.name}
+      </Typography>    
     <TableContainer component={Paper}>
-    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <Table sx={{ minWidth: 800 }} aria-label="simple table">
       <TableHead>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 2 } }}>
           <TableCell align="center">Name</TableCell>
@@ -49,7 +60,7 @@ const Detail = () => {
       </TableBody>
     </Table>
   </TableContainer>
-  </div>  
+  </Box>  
   )
 }
 

@@ -25,7 +25,12 @@ const Cards = ( odontologo ) => {
             image="https://raw.githubusercontent.com/Frontend-III/fe3-final/main/public/images/doctor.jpg"
             alt="doctor image Background"
             />
-          <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <CardContent 
+          sx={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center'
+            }}>
             <Typography component={Link} gutterBottom variant="h5" to={`/dentist/${odontologo.id}`} color="secondary">
               {odontologo.name}
             </Typography >
@@ -33,7 +38,7 @@ const Cards = ( odontologo ) => {
           </CardContent>
         </Card>
         <CardActions sx={{ justifyContent: 'center' }}>
-          <Button id={odontologo.id} size="medium" color="succes" onClick={handleClickFavorites} onChange={handleClickFavorites}>
+          <Button id={odontologo.id} size="medium" color="succes" onClick={handleClickFavorites}>
           {isFav(odontologo) ? <Star id={odontologo.id} color=""/> : <StarBorder id={odontologo.id}/>}
           </Button>
         </CardActions>

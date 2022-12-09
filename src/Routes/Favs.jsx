@@ -7,17 +7,21 @@ import GridFavorites from "../Components/common/GridFavorites";
 const Favs = () => {
 
   return (
-    <Box sx={{ my: 5}} >
+    <Box 
+    sx={{ 
+      my: 5, 
+      minHeight: '75vh'}} >
       <div>
-        <Typography sx={{
+      <Typography 
+      sx={{
         fontSize: 40,
         display: 'flex',
         justifyContent: 'center',
         letterSpacing: "5px",
         mb: 5, 
         }}>
-          Dentist Fav
-        </Typography>
+        Favorite Dentists
+      </Typography>
         <div className='card-grid'>
           {/* Aqui deberias renderizar las cards */}        
           <GridFavorites />

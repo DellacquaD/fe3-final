@@ -7,10 +7,12 @@ import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
-    <div>
+    <div >
         <CssBaseline />
         <Navbar />
-        <Outlet />
+          <div style={{ minHeight: '82vh', display: 'flex', justifyContent: 'center' }} >
+            <Outlet />
+          </div>
         <Footer />
     </div>
   )

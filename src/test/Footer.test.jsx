@@ -16,6 +16,6 @@ describe('Footer', () => {
         expect(btnf.href).toBe(`https://www.facebook.com/`);
         expect(btni.href).toBe(`https://www.instagram.com/`);
         expect(btnw.href).toBe(`https://www.whatsapp.com/`);
-        expect(btnt.href).toBe(`https://www.tiktok.com/`);
+        expect(btnt.href).toBe(`https://www.twitter.com/`);
     })
 })

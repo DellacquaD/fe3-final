@@ -8,14 +8,15 @@ import Grid from "../Components/common/Grid"
 const Home = () => {
   return (
     <Box sx={{ my: 5}}>
-      <Typography sx={{
+      <Typography 
+      sx={{
         fontSize: 40,
         display: 'flex',
         justifyContent: 'center',
         letterSpacing: "5px",
         mb: 5, 
         }}>
-        Nuestros Dentistas
+        Our Dentists
       </Typography>
       <div className='card-grid'>
         {/* Aqui deberias renderizar las cards */}

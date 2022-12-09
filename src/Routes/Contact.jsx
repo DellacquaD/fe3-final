@@ -1,4 +1,4 @@
-import { Box, Container } from '@mui/material'
+import { Box, Container, Divider, Typography } from '@mui/material'
 import React from 'react'
 import Form from '../Components/Form'
 
@@ -6,12 +6,14 @@ import Form from '../Components/Form'
 
 const Contact = () => {
   return (
-    <Box sx={{
-      minHeight: '75vh'
-    }}>
-      <Container >
-        <h2>Want to know more?</h2>
-        <p>Send us your questions and we will contact you</p>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Container>
+        <Typography variant='h4'>Want to know more?</Typography>
+        <Divider/>
+        <Typography variant='h7'>Send us your questions and we will contact you</Typography>
+        <br />
+        <br />
+        <br />
         <Form/>
       </Container>
     </Box>
