@@ -1,6 +1,6 @@
 import { getFavStorage } from "./functions"
-import { green, grey, red } from "@mui/material/colors";
-import { createContext, useReducer, useMemo, useEffect } from "react";
+import { green, grey } from "@mui/material/colors";
+import { createContext, useReducer, useEffect } from "react";
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 
 

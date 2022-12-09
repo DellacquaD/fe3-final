@@ -1,6 +1,5 @@
 import  '@testing-library/jest-dom'
 import {render, screen , fireEvent} from '@testing-library/react'
-import userEvent from '@testing-library/user-event';
 import Form from '../Components/Form';
 
 beforeEach(() =>{
@@ -8,7 +7,7 @@ beforeEach(() =>{
 })
 
 
-test('Verifica que se renderizan los elementos nececarios del form', () => {
+test('Verificar que se renderizan los elementos necesarios del form', () => {
     
     const inputName = screen.getByLabelText("name");
 

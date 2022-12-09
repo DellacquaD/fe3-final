@@ -12,14 +12,12 @@ import Paper from '@mui/material/Paper';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Detail = () => {
 
   const [odontologo, setOdontologo] = useState(null);
   const {id} = useParams();
  
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
   useEffect(() =>{
     axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
     .then(res => setOdontologo(res.data))
@@ -39,28 +37,28 @@ const Detail = () => {
         {odontologo?.name}
       </Typography>    
     <TableContainer component={Paper}>
-    <Table sx={{ minWidth: 800 }} aria-label="simple table">
+    <Table sx={{ minWidth: 900 }} aria-label="simple table">
       <TableHead>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 2 } }}>
           <TableCell align="center">Name</TableCell>
           <TableCell align="center">Email</TableCell>
           <TableCell align="center">Phone</TableCell>
-          <TableCell align="center">Website</TableCell>         
+          <TableCell align="center">Website</TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>        
-          <TableRow  sx={{ '&:last-child td, &:last-child th': { border: 2 } }} >                 
+      <TableBody>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 2 } }}>
             <TableCell align="center" component="th" scope="row">
               {odontologo?.name}
             </TableCell>
             <TableCell align="center">{odontologo?.email}</TableCell>
             <TableCell align="center">{odontologo?.phone}</TableCell>
-            <TableCell align="center">{odontologo?.website}</TableCell>            
-          </TableRow>       
+            <TableCell align="center">{odontologo?.website}</TableCell>   
+          </TableRow>
       </TableBody>
     </Table>
   </TableContainer>
-  </Box>  
+  </Box>
   )
 }
 

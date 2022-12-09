@@ -1,6 +1,5 @@
 import React from 'react'
 import {Instagram, Facebook, WhatsApp} from '@mui/icons-material';
-import TikTokIcon from './common/tiktokIcon';
 import { AppBar, Box, Button, Container, IconButton, Typography } from '@mui/material';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
@@ -8,7 +7,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 const Footer = () => {
 
   return (    
-    <AppBar position="static" >
+    <AppBar position="static" sx={{ minHeight: '12vh'}} >
       <Container maxWidth="x2" sx={{ display: 'flex', flexDirection: 'column' }}> 
         <Button
           color='secondary'

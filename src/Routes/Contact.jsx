@@ -8,9 +8,13 @@ const Contact = () => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Container>
-        <Typography variant='h4'>Want to know more?</Typography>
+        <Typography variant='h4'>
+          Want to know more?
+        </Typography>
         <Divider/>
-        <Typography variant='h7'>Send us your questions and we will contact you</Typography>
+        <Typography variant='h7'>
+          Send us your questions and we will contact you
+        </Typography>
         <br />
         <br />
         <br />

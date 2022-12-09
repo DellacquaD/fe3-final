@@ -10,7 +10,12 @@ const Layout = () => {
     <div >
         <CssBaseline />
         <Navbar />
-          <div style={{ minHeight: '80vh', display: 'flex', justifyContent: 'center' }} >
+          <div 
+          style={{ 
+            minHeight: '80vh', 
+            display: 'flex', 
+            justifyContent: 'center' 
+            }} >
             <Outlet />
           </div>
         <Footer />

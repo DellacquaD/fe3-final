@@ -20,8 +20,6 @@ function ResponsiveAppBar() {
     dispatch({type: "theme"})
   }
  
-
-  
   const pages = [
     {
       name: "Home",
@@ -53,8 +51,7 @@ function ResponsiveAppBar() {
               <Typography
                 variant="h6"
                 component={Link}
-                color='secondary'
-                
+                color='secondary'                
                 sx={{
                   mr: 2,
                   display: { xs: 'none', md: 'flex' },
@@ -62,8 +59,7 @@ function ResponsiveAppBar() {
                   //letterSpacing: '5px',
                   margin: '20px',
                 }}
-                to="/home"
-              >
+                to="/home" >
                 DH Odonto
               </Typography>
             </Box>

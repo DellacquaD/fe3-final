@@ -4,7 +4,6 @@ import React, { useContext, useEffect } from 'react'
 import { GlobalContext } from '../utils/global.context';
 import axios from "axios";
 
-
 export default function SpacingGrid() {
 
 const { state, dispatch } = useContext(GlobalContext)
@@ -16,9 +15,6 @@ useEffect(() => {
     }
   )
 }, [])
-
-
-
 
  return (
     <Grid sx={{ flexGrow: 1 }}>
