@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 import React, { useContext } from 'react'
 import {DarkMode, Brightness5} from '@mui/icons-material';
 import { GlobalContext } from './utils/global.context';
-import { useNavigate } from 'react-router-dom';
 
 
 function ResponsiveAppBar() {
@@ -73,7 +72,8 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Change Theme">
-                <IconButton onClick={() => dispatch({type: "theme"})}>{state.Dark ? <Brightness5/> : <DarkMode />}
+              <IconButton onClick={() => dispatch({type: "theme"})}>
+                  {state.Dark ? <Brightness5/> : <DarkMode />}
               </IconButton>
             </Tooltip>
           </Box>

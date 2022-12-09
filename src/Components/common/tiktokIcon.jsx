@@ -1,6 +1,8 @@
 import { green } from "@mui/material/colors";
 import React from "react";
+import { GlobalContext } from "../utils/global.context";
 
+//const { state } = useContext(GlobalContextalContext)
 
 const TikTokIcon = ({ color = "#000000" }) => {
   return (

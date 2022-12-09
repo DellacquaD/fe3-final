@@ -8,19 +8,17 @@ import {  green, grey } from '@mui/material/colors';
 
 const Footer = () => {
 
-  const { state } = useContext(GlobalContext)
-
   return (    
     <AppBar position="static">
       <Container maxWidth="x2" sx={{ display: 'flex', flexDirection: 'column' }}> 
-        <Typography component={Button}
+        <Button
           color='secondary'
           fontWeight='bold'
           width="auto"
           onClick={() => {document.body.scrollIntoView({ behavior: "smooth"})}}
           >
             Volver a arriba
-        </Typography>
+        </Button>
         <Box    
         sx={{ 
           display: 'flex', 
@@ -37,11 +35,11 @@ const Footer = () => {
                 DIGITAL HOUSE
               </Typography>
             </Box>
-            <Box>
-              <IconButton href={"http://www.google.com"}><Facebook color='secondary'/></IconButton>
-              <IconButton href={"http://www.google.com"}><Instagram color='secondary'/></IconButton>
-              <IconButton href={"http://www.google.com"}><WhatsApp color='secondary'/></IconButton>
-              <IconButton href={"http://www.google.com"}><TikTokIcon color={state.Dark ? green[600] : grey[800]}/></IconButton>
+            <Box role="Anchors">
+              <Typography role="facebook" component={IconButton} href={"https://www.facebook.com/"}><Facebook color='secondary'/></Typography>
+              <Typography role="instagram" component={IconButton} href={"https://www.instagram.com/"}><Instagram color='secondary'/></Typography>
+              <Typography role="whatsapp" component={IconButton} href={"https://www.whatsapp.com/"}><WhatsApp color='secondary'/></Typography>
+              <Typography role="tiktok" component={IconButton} href={"https://www.tiktok.com/"}><TikTokIcon/></Typography>
             </Box>
         </Box>
       </Container>
